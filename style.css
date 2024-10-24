@@ -1,4 +1,4 @@
-/* Reset e estilos básicos */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,264 +6,348 @@
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
-    background-color: #121212;
-    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #101010;
+    color: #f5f5f5;
     overflow-x: hidden;
-    line-height: 1.6;
 }
 
-/* Seção principal com fundo animado */
-#home {
+/* Animação de entrada */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 2s ease-in forwards;
+}
+
+.loader {
+    font-size: 2rem;
+    color: #00ffb3;
+    font-weight: bold;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+/* Navbar Customizada */
+.custom-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.nav-logo {
+    font-size: 2.2rem;
+    color: #00ffb3;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00ffb3;
+}
+
+.custom-nav.scrolled {
+    background-color: #000;
+}
+
+/* Hero Section com animação */
+.hero-section {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 255, 179, 0.2)), url('https://unsplash.com/photos/LaraHorizon'); /* Substitua pelo link da imagem */
+    background-size: cover;
+    background-position: center;
     position: relative;
-    background: linear-gradient(135deg, #6A82FB, #FC5C7D);
-}
-
-.hero-content {
-    text-align: center;
-    z-index: 2;
-}
-
-.animated-text {
-    font-size: 4rem;
-    font-family: 'Roboto Mono', monospace;
-    letter-spacing: 2px;
-    animation: slideIn 1.5s ease-in-out forwards;
-    color: #fff;
-}
-
-.subtext {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    color: #f9f9f9;
-    animation: fadeIn 2s 0.5s forwards;
-}
-
-.cta-button {
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #FC5C7D;
-    border: none;
     color: white;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero-text h2 {
+    font-size: 4rem;
+    letter-spacing: 5px;
+    animation: fadeInDown 1.5s ease-out;
+}
+
+.hero-text h3 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    animation: fadeInUp 1.8s ease-out;
+}
+
+.hero-text p {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    animation: fadeIn 2s ease-out;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    margin-top: 30px;
+    background-color: #00ffb3;
+    color: #121212;
+    font-weight: 700;
+    border-radius: 50px;
     text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 25px;
-    cursor: pointer;
-    animation: fadeInUp 2s 1s forwards;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    animation: fadeInUp 2.2s ease-out;
 }
 
-.cta-button:hover {
-    background-color: #6A82FB;
+.cta-btn:hover {
+    background-color: #00d1a3;
 }
 
-.circle-background {
-    position: absolute;
-    top: -100px;
-    left: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(233,69,96,0.8), transparent);
-    border-radius: 50%;
-    animation: pulse 4s infinite;
-}
-
-/* Animações */
-@keyframes slideIn {
-    from {
-        transform: translateY(-100%);
+@keyframes fadeInDown {
+    0% {
         opacity: 0;
+        transform: translateY(-50px);
     }
-    to {
+    100% {
+        opacity: 1;
         transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }
 
 @keyframes fadeInUp {
-    from {
+    0% {
         opacity: 0;
         transform: translateY(50px);
     }
-    to {
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-@keyframes pulse {
+@keyframes fadeIn {
     0% {
-        transform: scale(0.9);
-    }
-    50% {
-        transform: scale(1.1);
+        opacity: 0;
     }
     100% {
-        transform: scale(0.9);
+        opacity: 1;
     }
 }
 
-/* Seção sobre */
-.reveal-section {
-    padding: 80px 20px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border: 3px solid #00ffb3;
+    border-radius: 50%;
+    animation: scrollPulse 2s infinite;
 }
 
-.reveal-section h2 {
-    font-size: 2.5rem;
+@keyframes scrollPulse {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Seção Sobre */
+.sobre-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    background-color: #181818;
+}
+
+.sobre-content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    width: 80%;
+}
+
+.perfil-container {
+    flex: 1;
+}
+
+.perfil-img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(0, 255, 179, 0.3);
+    transition: transform 0.5s ease;
+}
+
+.perfil-img:hover {
+    transform: rotate(-5deg);
+}
+
+.sobre-texto {
+    flex: 2;
+}
+
+.sobre-texto h2 {
+    font-size: 3rem;
     margin-bottom: 20px;
-    position: relative;
-    color: #6A82FB;
+    color: #00ffb3;
+    text-transform: uppercase;
 }
 
-.reveal-section p {
+.sobre-texto p {
     font-size: 1.2rem;
-    color: #d3d3d3;
+    color: #ddd;
     line-height: 1.8;
     margin-bottom: 20px;
 }
 
-/* Seção de projetos melhorada */
-.projects-section {
-    padding: 100px 20px;
-    background-color: #1b1b1b;
+/* Seção Projetos */
+.projetos-section {
+    padding: 100px 0;
+    background-color: #101010;
 }
 
-.projects-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #6A82FB;
+.projetos-container {
     text-align: center;
+    width: 90%;
+    margin: 0 auto;
 }
 
-/* Carrossel de Projetos com Flexbox */
-.project-gallery {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+.projetos-container h2 {
+    font-size: 3rem;
+    color: #00ffb3;
+    margin-bottom: 50px;
+}
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    padding-bottom: 40px;
 }
 
-.project-item {
-    width: 300px;
-    height: 400px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-}
-
-.project-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
-
-.project-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+.projeto-card {
+    background-color: #202020;
+    border-radius: 20px;
     padding: 20px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 30px rgba(0, 255, 179, 0.1);
+}
+
+.projeto-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(0, 255, 179, 0.2);
+}
+
+.projeto-img {
     width: 100%;
-    box-sizing: border-box;
-    color: white;
-    font-family: 'Roboto Mono', monospace;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
-.project-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+/* Seção Contato */
+.contato-section {
+    padding: 100px 0;
+    background-color: #181818;
 }
 
-.project-info p {
+.form-contato {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-contato label {
+    color: #00ffb3;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.form-contato input,
+.form-contato textarea {
+    background-color: #202020;
+    color: #f5f5f5;
+    padding: 15px;
+    border: 2px solid #00ffb3;
+    border-radius: 10px;
     font-size: 1rem;
 }
 
-/* Seção de contato */
-.contact-section {
-    background-color: #121212;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.contact-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #6A82FB;
-}
-
-.contact-section .contact-content p {
+button {
+    background-color: #00ffb3;
+    color: #121212;
+    padding: 15px;
+    border-radius: 50px;
     font-size: 1.2rem;
-    color: #d3d3d3;
-    margin-bottom: 20px;
-}
-
-.contact-button {
-    padding: 10px 30px;
-    border: 2px solid #FC5C7D;
-    color: #FC5C7D;
     font-weight: bold;
-    border-radius: 25px;
     text-transform: uppercase;
-    transition: 0.3s;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.contact-button:hover {
-    background-color: #FC5C7D;
-    color: white;
+button:hover {
+    background-color: #00d1a3;
 }
 
-/* Footer minimalista */
+/* Footer */
 footer {
-    padding: 20px;
-    background-color: #1b1b1b;
     text-align: center;
+    padding: 30px;
+    background-color: #000;
+    color: #f5f5f5;
 }
 
 footer p {
-    font-size: 0.9rem;
-    color: #7a7a7a;
-}
-
-footer ul {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-footer ul li {
-    list-style: none;
-    margin: 0 10px;
-}
-
-footer ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    transition: 0.3s;
-}
-
-footer ul li a:hover {
-    color: #6A82FB;
+    font-size: 1rem;
 }
